@@ -1,0 +1,795 @@
+        :root {
+
+            --primary: #7c3aed;
+            --secondary: #3b82f6;
+            --accent: #ec4899;
+
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+
+            --bg: #f8fafc;
+            --card: rgba(255, 255, 255, .25);
+
+            --text: #0f172a;
+            --text-light: #64748b;
+
+            --glass-border: rgba(255, 255, 255, .2);
+
+            --shadow:
+                0 8px 32px rgba(31, 38, 135, .15);
+
+            --gradient:
+                linear-gradient(135deg,
+                    #7c3aed,
+                    #3b82f6,
+                    #ec4899);
+
+        }
+
+        /* DARK MODE */
+
+        body.dark {
+
+            --bg: #050816;
+
+            --card: rgba(15, 23, 42, .55);
+
+            --text: #f8fafc;
+
+            --text-light: #94a3b8;
+
+            --glass-border: rgba(255, 255, 255, .08);
+
+            --gradient:
+                linear-gradient(135deg,
+                    #0f172a,
+                    #312e81,
+                    #7c3aed,
+                    #ec4899);
+
+        }
+
+        /* =====================================================
+RESET
+===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                Segoe UI,
+                sans-serif;
+
+            background: var(--bg);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: .4s ease;
+            color: var(--text);
+        }
+
+        /* =====================================================
+ANIMATED BACKGROUND
+===================================================== */
+
+        .background {
+
+            position: fixed;
+            inset: 0;
+
+            background: var(--gradient);
+            background-size: 400% 400%;
+
+            animation:
+                gradientMove 18s ease infinite;
+
+            z-index: -3;
+
+        }
+
+        @keyframes gradientMove {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+        /* =====================================================
+WAVE
+===================================================== */
+
+        .wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -2;
+            opacity: .4;
+        }
+
+        .wave svg {
+            width: 100%;
+            height: 220px;
+            animation: waveFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes waveFloat {
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* =====================================================
+PARTICLES
+===================================================== */
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* =====================================================
+THEME TOGGLE
+===================================================== */
+
+        .theme-toggle {
+
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            width: 60px;
+            height: 60px;
+
+            border-radius: 50%;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            backdrop-filter: blur(25px);
+
+            background: var(--card);
+
+            border: 1px solid var(--glass-border);
+
+            color: var(--text);
+
+            box-shadow: var(--shadow);
+
+            transition: .4s;
+
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+
+            transform:
+                scale(1.1) rotate(15deg);
+
+        }
+
+        /* =====================================================
+MAIN WRAPPER
+===================================================== */
+
+        .container {
+
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        /* =====================================================
+GLASS CARD
+===================================================== */
+
+        .auth-card {
+
+            width: 100%;
+            max-width: 480px;
+
+            background: var(--card);
+
+            backdrop-filter: blur(30px);
+
+            border: 1px solid var(--glass-border);
+
+            border-radius: 32px;
+
+            padding: 35px;
+
+            box-shadow: var(--shadow);
+
+            animation:
+                cardAppear .8s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(30px) scale(.95);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0) scale(1);
+            }
+
+        }
+
+        /* =====================================================
+LOGO
+===================================================== */
+
+        .logo {
+
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+
+            font-size: 2rem;
+
+            background: linear-gradient(90deg,
+                    #fff,
+                    #f0abfc,
+                    #93c5fd);
+
+            -background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo p {
+            margin-top: 8px;
+            color: var(--text-light);
+        }
+
+        /* =====================================================
+FORMS
+===================================================== */
+
+        .form-view {
+            display: none;
+            animation: fadeSlide .45s ease;
+        }
+
+        .form-view.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+
+            from {
+                opacity: 0;
+                transform: translateX(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+        }
+
+        .input-group {
+
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .input-group label {
+
+            display: block;
+            margin-bottom: 8px;
+
+            font-weight: 600;
+        }
+
+        .input-group input {
+
+            width: 100%;
+            padding: 15px 18px;
+
+            border: none;
+            outline: none;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255, 255, 255, .12);
+
+            backdrop-filter: blur(20px);
+
+            color: var(--text);
+
+            font-size: 15px;
+
+            transition: .3s;
+        }
+
+        .input-group input:focus {
+
+            box-shadow:
+                0 0 0 3px rgba(124, 58, 237, .3);
+
+            transform: translateY(-2px);
+        }
+
+        .validation-icon {
+
+            position: absolute;
+            right: 16px;
+            top: 48px;
+
+            color: var(--success);
+
+            opacity: 0;
+            transition: .3s;
+        }
+
+        /* =====================================================
+PASSWORD TOGGLE
+===================================================== */
+
+        .password-toggle {
+
+            position: absolute;
+            right: 16px;
+            top: 48px;
+
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .password-toggle:hover {
+            transform: scale(1.15);
+        }
+
+        /* =====================================================
+BUTTONS
+===================================================== */
+
+        .btn {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+            cursor: pointer;
+
+            border-radius: 14px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            color: white;
+
+            background:
+                linear-gradient(135deg,
+                    var(--primary),
+                    var(--secondary));
+
+            transition: .3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+
+            transform:
+                translateY(-3px) scale(1.02);
+
+            box-shadow:
+                0 10px 25px rgba(124, 58, 237, .35);
+        }
+
+        .btn:active {
+            transform: scale(.98);
+        }
+
+        /* =====================================================
+REMEMBER
+===================================================== */
+
+        .form-options {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .form-options a {
+
+            text-decoration: none;
+            color: #60a5fa;
+        }
+
+        /* =====================================================
+SOCIAL LOGIN
+===================================================== */
+
+        .social-section {
+            margin-top: 25px;
+        }
+
+        .social-title {
+
+            text-align: center;
+            margin-bottom: 18px;
+
+            color: var(--text-light);
+        }
+
+        .social-grid {
+
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .social-btn {
+
+            padding: 14px;
+
+            border: none;
+            cursor: pointer;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            background: rgba(255, 255, 255, .08);
+
+            color: var(--text);
+
+            backdrop-filter: blur(20px);
+
+            transition: .3s;
+        }
+
+        .social-btn:hover {
+
+            transform:
+                translateY(-4px) scale(1.04);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* =====================================================
+PASSWORD STRENGTH
+===================================================== */
+
+        .strength-wrapper {
+            margin-top: 10px;
+        }
+
+        .strength-bar {
+
+            height: 8px;
+            border-radius: 999px;
+
+            overflow: hidden;
+
+            background: rgba(255, 255, 255, .15);
+        }
+
+        .strength-fill {
+
+            height: 100%;
+            width: 0%;
+
+            transition: .4s;
+        }
+
+        .strength-text {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+TOAST
+===================================================== */
+
+        .toast-container {
+
+            position: fixed;
+
+            top: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 9999;
+        }
+
+        .toast {
+
+            background: #111827;
+            color: white;
+
+            padding: 15px 22px;
+
+            border-radius: 14px;
+
+            margin-top: 10px;
+
+            animation:
+                toastIn .4s ease;
+        }
+
+        @keyframes toastIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =====================================================
+PROFILE DASHBOARD
+===================================================== */
+
+        .dashboard {
+            display: none;
+            animation: fadeSlide .5s ease;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .profile-header {
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .avatar {
+
+            width: 80px;
+            height: 80px;
+
+            border-radius: 50%;
+
+            background: var(--gradient);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 2rem;
+            color: white;
+        }
+
+        .stats-grid {
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+
+            padding: 18px;
+
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, .08);
+
+            text-align: center;
+        }
+
+        .badges {
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .badge {
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .badge.success {
+            background: rgba(34, 197, 94, .15);
+            color: #22c55e;
+        }
+
+        .badge.warning {
+            background: rgba(245, 158, 11, .15);
+            color: #f59e0b;
+        }
+
+        .badge.info {
+            background: rgba(59, 130, 246, .15);
+            color: #3b82f6;
+        }
+
+        /* =====================================================
+QUICK ACTIONS
+===================================================== */
+
+        .quick-actions {
+
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+        .action-btn {
+
+            padding: 14px;
+
+            border: none;
+
+            cursor: pointer;
+
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, .08);
+
+            color: var(--text);
+
+            transition: .3s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* =====================================================
+SECURITY PANEL
+===================================================== */
+
+        .security-panel {
+
+            margin-top: 25px;
+
+            padding: 20px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255, 255, 255, .08);
+        }
+
+        /* =====================================================
+SKELETON
+===================================================== */
+
+        .skeleton {
+
+            height: 18px;
+            border-radius: 999px;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, .05),
+                    rgba(255, 255, 255, .2),
+                    rgba(255, 255, 255, .05));
+
+            background-size: 300%;
+
+            animation: skeleton 1.5s infinite;
+        }
+
+        @keyframes skeleton {
+
+            0% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: -100%;
+            }
+
+        }
+
+        /* =====================================================
+CONFETTI
+===================================================== */
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+        }
+
+        /* =====================================================
+RESPONSIVE
+===================================================== */
+
+        @media(max-width:768px) {
+
+            .auth-card {
+                padding: 24px;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+        }
