@@ -270,7 +270,7 @@ LOGO
                     #f0abfc,
                     #93c5fd);
 
-            -background-clip: text;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
