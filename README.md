@@ -176,7 +176,7 @@ UltraAuth-X/
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/snowflake-playzz/UltraAuth-X.git
+git clone https://github.com/Snowflake-Technologies/UltraAuth-X.git
 ```
 
 ## 2. Open Project
